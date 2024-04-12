@@ -22,7 +22,7 @@ class KanbanLabelHistory
 
     #[ORM\ManyToOne(inversedBy: 'kanbanLabelHistories')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Label $entity = null;
+    private ?KanbanLabel $entity = null;
 
     #[ORM\Column(length: 24)]
     private ?string $status = null;
@@ -56,12 +56,12 @@ class KanbanLabelHistory
         return $this;
     }
 
-    public function getEntity(): ?Label
+    public function getEntity(): ?KanbanLabel
     {
         return $this->entity;
     }
 
-    public function setEntity(?Label $entity): static
+    public function setEntity(?KanbanLabel $entity): static
     {
         $this->entity = $entity;
 

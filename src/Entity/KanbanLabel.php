@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LabelRepository::class)]
-class Label
+class KanbanLabel
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
