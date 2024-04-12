@@ -24,9 +24,6 @@ class KanbanLabelHistory
     #[ORM\JoinColumn(nullable: false)]
     private ?Label $entity = null;
 
-    #[ORM\ManyToOne(inversedBy: 'kanbanLabelHistories')]
-    private ?User $createdBy = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -64,18 +61,6 @@ class KanbanLabelHistory
     public function setEntity(?Label $entity): static
     {
         $this->entity = $entity;
-
-        return $this;
-    }
-
-    public function getCreatedBy(): ?User
-    {
-        return $this->createdBy;
-    }
-
-    public function setCreatedBy(?User $createdBy): static
-    {
-        $this->createdBy = $createdBy;
 
         return $this;
     }

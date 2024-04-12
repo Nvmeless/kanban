@@ -76,7 +76,6 @@ class Label
     public function setLabelColor(string $labelColor): static
     {
         $this->labelColor = $labelColor;
-
         return $this;
     }
 
