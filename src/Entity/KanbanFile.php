@@ -28,6 +28,9 @@ class KanbanFile
     #[ORM\OneToMany(targetEntity: KanbanFileHistory::class, mappedBy: 'entity')]
     private Collection $kanbanFileHistories;
 
+    #[ORM\Column(length: 24)]
+    private ?string $status = null;
+
     public function __construct()
     {
         $this->kanbanFileHistories = new ArrayCollection();
@@ -68,5 +71,17 @@ class KanbanFile
     public function getKanbanFileHistories(): Collection
     {
         return $this->kanbanFileHistories;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }

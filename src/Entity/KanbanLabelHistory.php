@@ -24,6 +24,9 @@ class KanbanLabelHistory
     #[ORM\JoinColumn(nullable: false)]
     private ?Label $entity = null;
 
+    #[ORM\Column(length: 24)]
+    private ?string $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -61,6 +64,18 @@ class KanbanLabelHistory
     public function setEntity(?Label $entity): static
     {
         $this->entity = $entity;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
 
         return $this;
     }
