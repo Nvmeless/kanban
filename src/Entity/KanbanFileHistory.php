@@ -24,10 +24,6 @@ class KanbanFileHistory
     #[ORM\JoinColumn(nullable: false)]
     private ?KanbanFile $entity = null;
 
-    #[ORM\ManyToOne(inversedBy: 'kanbanFileHistories')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $createdBy = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -69,15 +65,4 @@ class KanbanFileHistory
         return $this;
     }
 
-    public function getCreatedBy(): ?User
-    {
-        return $this->createdBy;
-    }
-
-    public function setCreatedBy(?User $createdBy): static
-    {
-        $this->createdBy = $createdBy;
-
-        return $this;
-    }
 }
