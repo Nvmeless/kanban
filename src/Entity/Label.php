@@ -9,7 +9,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: LabelRepository::class)]
-class KanbanLabel
+class Label
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -29,17 +29,17 @@ class KanbanLabel
     private ?\DateTimeInterface $updateAt = null;
 
     /**
-     * @var Collection<int, KanbanLabelHistory>
+     * @var Collection<int, LabelHistory>
      */
-    #[ORM\OneToMany(targetEntity: KanbanLabelHistory::class, mappedBy: 'entity')]
-    private Collection $kanbanLabelHistories;
+    #[ORM\OneToMany(targetEntity: LabelHistory::class, mappedBy: 'entity')]
+    private Collection $labelHistories;
 
     #[ORM\Column(length: 24)]
     private ?string $status = null;
 
     public function __construct()
     {
-        $this->kanbanLabelHistories = new ArrayCollection();
+        $this->labelHistories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -95,29 +95,29 @@ class KanbanLabel
     }
 
     /**
-     * @return Collection<int, KanbanLabelHistory>
+     * @return Collection<int, LabelHistory>
      */
-    public function getKanbanLabelHistories(): Collection
+    public function getLabelHistories(): Collection
     {
-        return $this->kanbanLabelHistories;
+        return $this->labelHistories;
     }
 
-    public function addKanbanLabelHistory(KanbanLabelHistory $kanbanLabelHistory): static
+    public function addLabelHistory(LabelHistory $labelHistory): static
     {
-        if (!$this->kanbanLabelHistories->contains($kanbanLabelHistory)) {
-            $this->kanbanLabelHistories->add($kanbanLabelHistory);
-            $kanbanLabelHistory->setEntity($this);
+        if (!$this->labelHistories->contains($labelHistory)) {
+            $this->labelHistories->add($labelHistory);
+            $labelHistory->setEntity($this);
         }
 
         return $this;
     }
 
-    public function removeKanbanLabelHistory(KanbanLabelHistory $kanbanLabelHistory): static
+    public function removeLabelHistory(LabelHistory $labelHistory): static
     {
-        if ($this->kanbanLabelHistories->removeElement($kanbanLabelHistory)) {
+        if ($this->labelHistories->removeElement($labelHistory)) {
             // set the owning side to null (unless already changed)
-            if ($kanbanLabelHistory->getEntity() === $this) {
-                $kanbanLabelHistory->setEntity(null);
+            if ($labelHistory->getEntity() === $this) {
+                $labelHistory->setEntity(null);
             }
         }
 

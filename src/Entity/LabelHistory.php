@@ -2,12 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\KanbanLabelHistoryRepository;
+use App\Repository\LabelHistoryRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: KanbanLabelHistoryRepository::class)]
-class KanbanLabelHistory
+#[ORM\Entity(repositoryClass: LabelHistoryRepository::class)]
+class LabelHistory
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -20,9 +20,9 @@ class KanbanLabelHistory
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
 
-    #[ORM\ManyToOne(inversedBy: 'kanbanLabelHistories')]
+    #[ORM\ManyToOne(inversedBy: 'labelHistories')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?KanbanLabel $entity = null;
+    private ?Label $entity = null;
 
     #[ORM\Column(length: 24)]
     private ?string $status = null;
@@ -56,12 +56,12 @@ class KanbanLabelHistory
         return $this;
     }
 
-    public function getEntity(): ?KanbanLabel
+    public function getEntity(): ?Label
     {
         return $this->entity;
     }
 
-    public function setEntity(?KanbanLabel $entity): static
+    public function setEntity(?Label $entity): static
     {
         $this->entity = $entity;
 

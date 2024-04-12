@@ -2,27 +2,27 @@
 
 namespace App\Repository;
 
-use App\Entity\KanbanLabelHistory;
+use App\Entity\LabelHistory;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<KanbanLabelHistory>
+ * @extends ServiceEntityRepository<LabelHistory>
  *
- * @method KanbanLabelHistory|null find($id, $lockMode = null, $lockVersion = null)
- * @method KanbanLabelHistory|null findOneBy(array $criteria, array $orderBy = null)
- * @method KanbanLabelHistory[]    findAll()
- * @method KanbanLabelHistory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method LabelHistory|null find($id, $lockMode = null, $lockVersion = null)
+ * @method LabelHistory|null findOneBy(array $criteria, array $orderBy = null)
+ * @method LabelHistory[]    findAll()
+ * @method LabelHistory[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class KanbanLabelHistoryRepository extends ServiceEntityRepository
+class LabelHistoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, KanbanLabelHistory::class);
+        parent::__construct($registry, LabelHistory::class);
     }
 
 //    /**
-//     * @return KanbanLabelHistory[] Returns an array of KanbanLabelHistory objects
+//     * @return LabelHistory[] Returns an array of LabelHistory objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -36,7 +36,7 @@ class KanbanLabelHistoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?KanbanLabelHistory
+//    public function findOneBySomeField($value): ?LabelHistory
 //    {
 //        return $this->createQueryBuilder('k')
 //            ->andWhere('k.exampleField = :val')
